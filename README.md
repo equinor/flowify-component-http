@@ -19,8 +19,6 @@ export AUTH=SERVICE_PRINCIPAL
 export CLIENT_ID 
 export CLIENT_SECRET
 export RESOURCE_ID
-
-#Tenant ID default to Equinor if using docker image
 export TENANT_ID
 ```
 ## Options
