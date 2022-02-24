@@ -1,0 +1,25 @@
+{
+  "name": "flowify-component-http",
+  "version": "1.0.0",
+  "description": "http request component for Flowify",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/equinor/flowify-component-http.git"
+  },
+  "author": "Adam Cheng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/equinor/flowify-component-http/issues"
+  },
+  "homepage": "https://github.com/equinor/flowify-component-http#readme",
+  "dependencies": {
+    "@azure/msal-node": "^1.6.0",
+    "axios": "^0.26.0"
+  }
+}
