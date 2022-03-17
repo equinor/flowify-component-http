@@ -7,8 +7,8 @@ async function requestConfig() {
     let config = process.env.AUTH=='SERVICE_PRINCIPAL' ? { headers: { Authorization: `Bearer ${await getToken()}` } } : {};
 
     if (process.env.EXTRA_HEADERS) {
-        const extraHeaderStr = Buffer.from(process.env.EXTRA_HEADERS, 'base64').toString();
-        const extraHeader = JSON.parse(extraHeaderStr);
+        //const extraHeaderStr = Buffer.from(process.env.EXTRA_HEADERS, 'base64').toString();
+        const extraHeader = JSON.parse(process.env.EXTRA_HEADERS);
         config.headers ?
             config.headers = {
                 ...config.headers,
@@ -23,7 +23,7 @@ async function httpGet(url) {
     const config = await requestConfig();
     axios.get(url, config).then((response) => {
         //log.info(response.data);
-        const savePath = `${process.env.SAVE_FILE}`;
+        const savePath = `${process.env.SAVE_PATH}/output.json`;
         writeFileSync(savePath, JSON.stringify(response.data));
         return response.data;
     }).catch((error) => {
@@ -37,7 +37,7 @@ async function httpPost(url, payload) {
     axios.post(url, config).then((response) => {
         //log.info(response.data);
         const savePath = `${process.env.SAVE_PATH}/output.json`;
-        fs.writeFileSync(savePath, response.data);
+        fs.writeFileSync(savePath, JSON.stringify(response.data));
         return response.data;
     }).catch((error) => {
         log.error(error);
